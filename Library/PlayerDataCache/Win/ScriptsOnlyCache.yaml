@@ -2,11 +2,13 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - CameraScript
+    - EnemyBehavior
     - PlayerScript
     Unity.2D.Animation.Editor.dll:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
+    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintingState
     - UnityEditor.Tilemaps.GridPaletteBrushes
     - UnityEditor.Tilemaps.GridPalettes
@@ -14,17 +16,18 @@ ScriptsOnlyBuild:
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
-    Unity.Timeline.Editor.dll:
-    - TimelineProjectSettings
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - TestRunner.Callbacks.WindowResultUpdaterDataHolder
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
+    - UnityEditor.TestTools.TestRunner.CommandLineTest.RunData
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
     - UnityEditor.TestTools.TestRunner.TestRunnerWindow
@@ -55,28 +58,42 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 62
       Script: {instanceID: 0}
+    - Class: 70
+      Script: {instanceID: 0}
+    - Class: 74
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 592}
+      Script: {instanceID: 600}
     - Class: 114
-      Script: {instanceID: 11728}
+      Script: {instanceID: 11734}
     - Class: 114
-      Script: {instanceID: 12036}
+      Script: {instanceID: 12042}
     - Class: 114
-      Script: {instanceID: 12796}
+      Script: {instanceID: 12802}
     - Class: 114
-      Script: {instanceID: 13938}
+      Script: {instanceID: 13070}
     - Class: 114
-      Script: {instanceID: 14386}
+      Script: {instanceID: 13946}
     - Class: 114
-      Script: {instanceID: 15020}
+      Script: {instanceID: 14340}
     - Class: 114
-      Script: {instanceID: 18862}
+      Script: {instanceID: 14396}
     - Class: 114
-      Script: {instanceID: 22890}
+      Script: {instanceID: 15030}
+    - Class: 114
+      Script: {instanceID: 22618}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -340,6 +357,12 @@ ScriptsOnlyBuild:
     className: Selectable
   - hash:
       serializedVersion: 2
+      Hash: 66bca5cc6a18c5298ec75235e56a84d6
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraScript
+  - hash:
+      serializedVersion: 2
       Hash: b3ab2106268377ffe25dd18ac23dca28
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -464,6 +487,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextMeshProUGUI
+  - hash:
+      serializedVersion: 2
+      Hash: 98faafa91a7a3e48ecece32910db80ee
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerScript
   - hash:
       serializedVersion: 2
       Hash: f336e086360abe49a3323e5f1583c35a
@@ -592,17 +621,11 @@ ScriptsOnlyBuild:
     className: PlayableTrack
   - hash:
       serializedVersion: 2
-      Hash: ba8885765ad8fe055d2176fbae6efcd9
+      Hash: e08dc097b830ae769e9cdd9b04e903ac
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: PlayerScript
-  - hash:
-      serializedVersion: 2
-      Hash: 66bca5cc6a18c5298ec75235e56a84d6
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: CameraScript
+    className: EnemyBehavior
   platform: 5
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/dagga/Desktop/Platformer.exe
+  playerPath: C:/Users/dagga/Desktop/Real Build/Platformer.exe

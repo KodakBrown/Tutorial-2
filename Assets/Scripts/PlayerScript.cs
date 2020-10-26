@@ -11,12 +11,34 @@ public class PlayerScript : MonoBehaviour
     public float speed;
     public Text score;
     private int scoreValue = 0;
+    public Text WinText;
+    public Text LivesText;
+    private int Lives;
+    public AudioSource musicSource;
+
+    public AudioClip musicClipOne;
+
+    public AudioClip musicClipTwo;
+    Animator anim;
+    private bool facingRight = true;
+    private bool isOnGround;
+    public Transform groundcheck;
+    public float checkRadius;
+    public LayerMask allGround;
 
     // Start is called before the first frame update
     void Start()
     {
         rd2d = GetComponent<Rigidbody2D>();
         score.text = scoreValue.ToString();
+        WinText.text = "";
+        Lives = 3;
+        
+        musicSource.clip = musicClipOne;
+        musicSource.Play();
+
+        anim = GetComponent<Animator>();
+        
     }
 
     // Update is called once per frame
@@ -28,9 +50,52 @@ public class PlayerScript : MonoBehaviour
         
         rd2d.AddForce(new Vector2(hozMovement * speed, vertMovement * speed));
         
+        isOnGround = Physics2D.OverlapCircle(groundcheck.position, checkRadius, allGround);
+        
         if (Input.GetKey("escape"))
         {
         Application.Quit();
+        }
+
+        LivesText.text = "Lives: " + Lives.ToString();
+
+        if (facingRight == false && hozMovement > 0)
+        {
+        Flip();
+        }
+        else if (facingRight == true && hozMovement < 0)
+        {
+         Flip();
+        }
+
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+        anim.SetInteger("State", 2);
+        }
+
+        if (Input.GetKeyUp(KeyCode.W))
+        {
+        anim.SetInteger("State", 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+        anim.SetInteger("State", 1);
+        }
+
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+        anim.SetInteger("State", 0);
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+        anim.SetInteger("State", 1);
+        }
+
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+        anim.SetInteger("State", 0);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -40,12 +105,41 @@ public class PlayerScript : MonoBehaviour
             scoreValue += 1;
             score.text = scoreValue.ToString();
             Destroy(collision.collider.gameObject);
+            
+            if(scoreValue == 4)
+            {
+            transform.position = new Vector2(45f, 1f);
+            Lives = 3;
+            }
+
+            if (scoreValue == 8)
+            {
+            WinText.text = "You Win! Game Created By Jacob Lalmansingh";
+            musicSource.clip = musicClipTwo;
+            musicSource.Play();
+            }
         }
 
+        if (collision.collider.tag == "Enemy")
+        {
+            Lives -= 1;
+
+            score.text = scoreValue.ToString();
+
+            Destroy(collision.collider.gameObject);
+
+            if (Lives <= 0)
+            {
+            WinText.text = "Game Over";
+            Destroy(this);
+            }
+
+            
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.collider.tag == "Ground")
+        if (collision.collider.tag == "Ground" && isOnGround)
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -53,5 +147,15 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
+
+    void Flip()
+    {
+     facingRight = !facingRight;
+     Vector2 Scaler = transform.localScale;
+     Scaler.x = Scaler.x * -1;
+     transform.localScale = Scaler;
+    }
 }
+   
+   
 
